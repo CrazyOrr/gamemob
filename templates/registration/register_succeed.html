@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block script %}
+    <script>
+        var count_down_seconds = 5;
+        var timer;
+        var redirect_url = "{% url 'login' %}";
+        function countDown() {
+            if (count_down_seconds > 0) {
+                $("#count_down").text(count_down_seconds--)
+                timer = setTimeout(countDown, 1000)
+            } else {
+                redirect()
+            }
+        }
+        function redirect() {
+            if (timer !== undefined){
+                clearTimeout(timer)
+            }
+            window.location.assign(redirect_url)
+        }
+        $(document).ready(function () {
+            countDown()
+            $("#redirect").attr("href", redirect_url)
+        })
+    </script>
+{% endblock %}
+
+{% block content %}
+    Congratulations! You have been successfully registered. Redirect to login in <span id="count_down"></span> seconds.<br>
+    If you are not automatically redirected, please click <a id="redirect">here</a>.
+{% endblock %}

@@ -1,6 +1,10 @@
 # gamemob
 A Django demo project.
 
+## Admin
+wanglei02
+123456
+
 ## License
 
     Copyright 2015 Lei Wang
